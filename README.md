@@ -27,14 +27,18 @@ The MarketShark Server is a NodeJS backend designed to manage connections betwee
 3. **Configure Websocket Ports (Optional)**
    - By default, websockets run on ports `7654` and `7655`. Modify these in the code if different ports are required.
 
-4. **Recommended Deployment Options**
+4. **Add Headless Executables**
+   - Executables built from [MarketSharkHeadless](https://github.com/JackTYM/MarketSharkHeadless) should be added to the `executable` folder in this project.
+   - Rename the `client` file to `marketshark` before placing it in the `executable` folder.
+
+5. **Recommended Deployment Options**
    - Use **PM2** or **Docker** to keep the server running persistently and to handle crashes and restarts. For Docker, a Dockerfile can be added based on your deployment needs.
    - For PM2, run:
      ```bash
      pm2 start src/index.js --name MarketSharkServer
      ```
 
-5. **Configure NGINX (Optional)**
+6. **Configure NGINX (Optional)**
    - NGINX configuration files for the server are located in the `nginx` directory. Edit these as needed for your setup.
 
 ## Websocket Connections
