@@ -37,7 +37,7 @@ The MarketShark Server is a NodeJS backend designed to manage connections betwee
    - Replace `DOMAIN` with your domain / IP
    - Replace `WEBSOCKET_PORT` and `SERVICE_PORT`
    - Add SSL Certificates or route through Cloudflare Proxy (Reccomended)
-      - Alternatively, switch to using `http` over `https` and `ws` over `wss` in sources`
+      - Alternatively, switch to using `http` over `https` and `ws` over `wss` in sources
 
 ## Websocket Connections
 
