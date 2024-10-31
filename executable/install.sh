@@ -31,7 +31,7 @@ else
 fi
 
 # Validate the key by checking the response from the server
-KEY_VALIDATION=$(curl -s "https://service.marketshark.net/cli?key=$USER_KEY")
+KEY_VALIDATION=$(curl -s "https://service.DOMAIN/cli?key=$USER_KEY")
 
 if [[ "$KEY_VALIDATION" == "Invalid key." ]]; then
     echo "The key you provided is invalid. Please try again."
@@ -51,7 +51,7 @@ mkdir -p "$USER_HOME/.marketshark"
 chown -R $USER_NAME:$USER_NAME "$USER_HOME/.marketshark"
 
 # Download the MarketShark CLI and copy it to a shorter name
-curl -o /usr/local/bin/marketshark "https://service.marketshark.net/cli?key=$USER_KEY"
+curl -o /usr/local/bin/marketshark "https://service.DOMAIN/cli?key=$USER_KEY"
 if [ $? -ne 0 ]; then
     echo "Failed to download the MarketShark CLI. Please check your network connection and try again."
     exit 1
@@ -67,7 +67,7 @@ chmod +x /usr/local/bin/ms
 rm -f "$USER_HOME/.marketshark/service"
 
 # Download the service file
-curl -o "$USER_HOME/.marketshark/service" "https://service.marketshark.net/service?key=$USER_KEY"
+curl -o "$USER_HOME/.marketshark/service" "https://service.DOMAIN/service?key=$USER_KEY"
 if [ $? -ne 0 ]; then
     echo "Failed to download the MarketShark service file. Please check your network connection and try again."
     exit 1

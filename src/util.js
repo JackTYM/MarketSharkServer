@@ -224,11 +224,6 @@ async function findCoflAuction(uuid) {
 var ms_states = {}
 
 async function authorizeUser() {
-    //const state = crypto.randomBytes(16).toString('hex');
-
-    //ms_states[state] = key;
-    //const url = `https://login.microsoftonline.com/consumers/oauth2/v2.0/authorize?client_id=5226351a-f8e8-47ad-9733-e7fc0c828fe9&response_type=code&redirect_uri=https%3A%2F%2Fmarketshark.net%2Foauth&scope=XboxLive.signin%20offline_access&prompt=select_account&state=${state}`
-
     return await loginDevice();
 }
 
@@ -262,111 +257,6 @@ async function refresh(refreshToken) {
 }
 
 const express = require('express');
-const { EmbedBuilder } = require("@discordjs/builders");
-/*const app = express();
-
-app.get('/oauth', async (req, res) => {
-    const queryParams = req.query;
-
-    var htmlResponse;
-
-    if (ms_states[queryParams["state"]]) {
-
-        const oAuth = await login(queryParams["code"]);
-        const xbl = await getXbl(oAuth.accessToken);
-        const xsts = await getXSTS(xbl.token);
-        const mc = await getMCToken(xbl.uhs, xsts.token);
-        const mcInfo = await getMcInfo(mc.access_token);
-
-        htmlResponse = `
-    <!DOCTYPE html>
-    <html lang="en">
-    
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>SUCCESS</title>
-        <style>
-            body {
-                font-family: 'Arial', sans-serif;
-                background-color: #64d726; 
-                color: white;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
-                margin: 0;
-                padding: 0;
-                text-align: center;
-            }
-    
-            h1 {
-                font-size: 3rem;
-                margin-bottom: 20px;
-            }
-    
-            p {
-                font-size: 1.5rem;
-            }
-        </style>
-    </head>
-    
-    <body>
-        <div class="content">
-            <h1>Successfully authenticated account with MarketShark!</h1>
-        </div>
-    </body>
-    
-    </html>
-  `;
-    } else {
-        htmlResponse = `
-    <!DOCTYPE html>
-    <html lang="en">
-    
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>SUCCESS</title>
-        <style>
-            body {
-                font-family: 'Arial', sans-serif;
-                background-color: #c81f1f; 
-                color: white;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
-                margin: 0;
-                padding: 0;
-                text-align: center;
-            }
-    
-            h1 {
-                font-size: 3rem;
-                margin-bottom: 20px;
-            }
-    
-            p {
-                font-size: 1.5rem;
-            }
-        </style>
-    </head>
-    
-    <body>
-        <div class="content">
-            <h1>An error occurred!</h1>
-            <p>Please try logging in again or contact an admin at marketshark.net</p>
-        </div>
-    </body>
-    
-    </html>
-  `;
-    }
-
-    res.send(htmlResponse);
-});*/
-
 
 async function login(code) {
     const url = 'https://login.microsoftonline.com/consumers/oauth2/v2.0/token';
@@ -376,7 +266,7 @@ async function login(code) {
         scope: 'xboxlive.signin offline_access',
         code: code,
         grant_type: 'authorization_code',
-        redirect_uri: 'https://marketshark.net/oauth',
+        redirect_uri: `https://${process.env.DOMAIN}/oauth`,
         //client_secret: 'aAW8Q~x2UXABS5bEoq6R7EcS_BOgTkI9_1XNycM7'
         client_secret: 'C-L8Q~Twx2xOuUpWytR1BhLCStI1fVU3rGetTcg.'
     });

@@ -68,7 +68,7 @@ require('dotenv').config()
 client.login(process.env.DISCORD_TOKEN)
 
 const { WebSocketServer } = require('ws');
-const wss = new WebSocketServer({ port: 7654 });
+const wss = new WebSocketServer({ port: process.env.WEBSOCKET_PORT });
 
 // Set a timeout of 5 minutes (300,000 milliseconds)
 wss.options.handshakeTimeout = 300000;
@@ -188,7 +188,7 @@ wss.on('connection', (socket, req) => {
 });
 
 
-const wssService = new WebSocketServer({ port: 7655 });
+const wssService = new WebSocketServer({ port: process.env.WEBSOCKET_PORT });
 wssService.options.handshakeTimeout = 60000;
 
 var serviceClients = {};

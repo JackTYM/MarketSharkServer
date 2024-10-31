@@ -22,7 +22,7 @@ module.exports = async function (messageJSON, socket, sessions, clients, client,
         const captcha = await get(`SELECT * FROM captchas WHERE key = ?`, [messageJSON.key]);
 
         const data = {
-            clientKey: "016cbe96b4829177ceccd55c7dcc5580",
+            clientKey: process.env.TWOCAPTCHA_KEY,
             taskId: captcha.solve_id,
         };
 

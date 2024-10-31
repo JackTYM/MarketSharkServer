@@ -18,14 +18,13 @@ The MarketShark Server is a NodeJS backend designed to manage connections betwee
      const admin_guild_id = "<YOUR_ADMIN_GUILD_ID>";
      ```
 
-2. **Set Your Discord Token**
-   - Ensure the `DISCORD_TOKEN` environment variable is set with your Discord bot token:
-     ```bash
-     export DISCORD_TOKEN=<YOUR_DISCORD_TOKEN>
-     ```
-
-3. **Configure Websocket Ports (Optional)**
-   - By default, websockets run on ports `7654` and `7655`. Modify these in the code if different ports are required.
+3. **Configure Env File**
+   - Copy example.env into the file .env
+   - Set the DISCORD_TOKEN
+   - Change DOMAIN to one pointing to your IP (Alternatively, your IP)
+      - If using a DOMAIN, ensure you have the subdomains **service**.example.com and **wss**.example.com
+   - Change ports if needed
+   - Set 2Captcha key from [2Captcha](https://2captcha.com/setting) if wanted (AutoCaptcha is an unfinished feature)
 
 4. **Add Headless Executables**
    - Executables built from [MarketSharkHeadless](https://github.com/JackTYM/MarketSharkHeadless) should be added to the `executable` folder in this project.
@@ -39,7 +38,11 @@ The MarketShark Server is a NodeJS backend designed to manage connections betwee
      ```
 
 6. **Configure NGINX (Optional)**
-   - NGINX configuration files for the server are located in the `nginx` directory. Edit these as needed for your setup.
+   - NGINX configuration files for the server are located in the `nginx` directory.
+   - Replace `DOMAIN` with your domain / IP
+   - Replace `WEBSOCKET_PORT` and `SERVICE_PORT`
+   - Add SSL Certificates or route through Cloudflare Proxy (Reccomended)
+      - Alternatively, switch to using `http` over `https` and `ws` over `wss` in sources`
 
 ## Websocket Connections
 

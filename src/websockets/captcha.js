@@ -150,7 +150,7 @@ module.exports = async function (messageJSON, socket, sessions, clients, client,
             const base64Image = buffer.toString('base64');
 
             var data = {
-                clientKey: "016cbe96b4829177ceccd55c7dcc5580",
+                clientKey: process.env.TWOCAPTCHA_KEY,
                 task: {
                     type: "CoordinatesTask",
                     body: base64Image,
@@ -167,7 +167,7 @@ module.exports = async function (messageJSON, socket, sessions, clients, client,
                     const solveId = response.data.taskId
                     getCaptcha = () => {
                         const data = {
-                            clientKey: "016cbe96b4829177ceccd55c7dcc5580",
+                            clientKey: process.env.TWOCAPTCHA_KEY,
                             taskId: solveId,
                         };
 
