@@ -2,7 +2,7 @@ const { Client, Collection } = require('discord.js');
 const fs = require('fs');
 const { abbreviateNumber, all, calculateBINTax, get, run, setup } = require("./util")
 
-const admin_guild_id = '1242568898868412416';
+const admin_guild_id = process.env.ADMIN_GUILD_ID;
 setup();
 
 const client = new Client({

@@ -12,32 +12,27 @@ The MarketShark Server is a NodeJS backend designed to manage connections betwee
 
 ## Setup Instructions
 
-1. **Set the Admin Guild ID**
-   - Open `src/index.js` and set your Discord admin guild ID in:
-     ```javascript
-     const admin_guild_id = "<YOUR_ADMIN_GUILD_ID>";
-     ```
-
-3. **Configure Env File**
+1. **Configure Env File**
    - Copy example.env into the file .env
    - Set the DISCORD_TOKEN
+   - Set the Guild ID for your "Admin" server
    - Change DOMAIN to one pointing to your IP (Alternatively, your IP)
       - If using a DOMAIN, ensure you have the subdomains **service**.example.com and **wss**.example.com
    - Change ports if needed
    - Set 2Captcha key from [2Captcha](https://2captcha.com/setting) if wanted (AutoCaptcha is an unfinished feature)
 
-4. **Add Headless Executables**
+2. **Add Headless Executables**
    - Executables built from [MarketSharkHeadless](https://github.com/JackTYM/MarketSharkHeadless) should be added to the `executable` folder in this project.
    - Rename the `client` file to `marketshark` before placing it in the `executable` folder.
 
-5. **Recommended Deployment Options**
+3. **Recommended Deployment Options**
    - Use **PM2** or **Docker** to keep the server running persistently and to handle crashes and restarts. For Docker, a Dockerfile can be added based on your deployment needs.
    - For PM2, run:
      ```bash
      pm2 start src/index.js --name MarketSharkServer
      ```
 
-6. **Configure NGINX (Optional)**
+4. **Configure NGINX (Optional)**
    - NGINX configuration files for the server are located in the `nginx` directory.
    - Replace `DOMAIN` with your domain / IP
    - Replace `WEBSOCKET_PORT` and `SERVICE_PORT`
