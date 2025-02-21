@@ -188,7 +188,7 @@ wss.on('connection', (socket, req) => {
 });
 
 
-const wssService = new WebSocketServer({ port: process.env.WEBSOCKET_PORT });
+const wssService = new WebSocketServer({ port: process.env.SERVICE_PORT });
 wssService.options.handshakeTimeout = 60000;
 
 var serviceClients = {};
